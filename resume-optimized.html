@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarupat Khaohomklin — CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+Thai:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        /* Shared design tokens — keep identical to portfolio/index.html */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Chivo', 'Noto Sans Thai', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            ink: '#111214',
+                            paper: '#FFFFFF',
+                            canvas: '#F3F4F6',
+                            line: '#D9DBE0',
+                            muted: '#565A63',
+                            accent: '#0055FF',
+                            panel: '#0E0F12',
+                            panelLine: '#2A2D33',
+                            panelText: '#D4D6DB',
+                            panelMuted: '#9A9DA6',
+                            accentDark: '#7AA2FF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --ink: #111214; --paper: #FFFFFF; --canvas: #F3F4F6; --line: #D9DBE0;
+            --muted: #565A63; --accent: #0055FF; --panel: #0E0F12; --panel-line: #2A2D33;
+            --panel-text: #D4D6DB; --panel-muted: #9A9DA6; --accent-dark: #7AA2FF;
+        }
+        body {
+            background-color: var(--canvas);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3 { text-wrap: balance; }
+
+        /* Shared component: tag pill (same as portfolio .tag) */
+        .tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.2rem 0.6rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            line-height: 1.5;
+        }
+        .tag-dark { border-color: var(--panel-line); color: var(--panel-text); }
+        .tag-dark-accent { border-color: #24407A; color: var(--accent-dark); }
+        .tag-accent { border-color: #B8CCFF; color: var(--accent); }
+
+        /* Shared component: section heading */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.375rem;
+            line-height: 1.2;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--line);
+        }
+        .side-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--panel-muted);
+        }
+        .bullet { position: relative; padding-left: 0.9rem; }
+        .bullet::before {
+            content: ''; position: absolute; left: 0; top: 0.55em;
+            width: 5px; height: 5px; background: var(--line);
+        }
+        .bullet-accent::before { background: var(--accent); }
+
+        /* --- PRINT (A4) --- */
+        @media print {
+            @page { margin: 0; size: A4; }
+            body {
+                background: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                padding: 0 !important; margin: 0 !important;
+            }
+            .no-print { display: none !important; }
+            .print-container {
+                max-width: 100% !important; width: 100% !important; margin: 0 !important;
+                border: 0 !important; box-shadow: none !important;
+                min-height: 100vh !important; display: flex !important; flex-direction: row !important;
+            }
+            .print-sidebar { width: 31% !important; padding: 1.35rem 1.35rem !important; }
+            .print-sidebar section { break-inside: avoid; page-break-inside: avoid; }
+            .print-sidebar .tag { font-size: 0.56rem !important; padding: 0.14rem 0.48rem !important; line-height: 1.35 !important; }
+            .print-sidebar h3 { font-size: 11px !important; margin-bottom: 0.25rem !important; }
+            .print-sidebar .mb-4 { margin-bottom: 0.6rem !important; }
+            .print-sidebar .space-y-2 > * + * { margin-top: 0.3rem !important; }
+            .print-content { width: 69% !important; padding: 1.5rem 1.85rem !important; }
+            a { text-decoration: none !important; }
+            .print-mb-small { margin-bottom: 0.85rem !important; }
+            .print-text-sm { font-size: 0.78rem !important; }
+            .avoid-break { break-inside: avoid; page-break-inside: avoid; }
+            /* md: breakpoints don't fire in print, so restore the desktop layout explicitly */
+            .print-show { display: block !important; }
+            .print-row { flex-direction: row !important; justify-content: space-between !important; align-items: baseline !important; }
+            .print-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+            .print-span-2 { grid-column: span 2 / span 2 !important; }
+            .print-cols-2 { column-count: 2 !important; column-gap: 1.5rem !important; }
+            .print-space-tight > * + * { margin-top: 1.1rem !important; }
+            .print-no-auto { margin-top: 0 !important; }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased py-0 md:py-8 px-0 md:px-4 lg:px-8 selection:bg-blue-100">
+
+    <button onclick="window.print()" class="no-print fixed top-4 right-4 md:top-8 md:right-8 z-50 bg-brand-ink hover:bg-brand-accent text-white px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-widest transition-colors">
+        Export PDF
+    </button>
+
+    <div class="print-container max-w-[1100px] mx-auto bg-brand-paper overflow-hidden flex flex-col md:flex-row min-h-[90vh] border border-brand-line">
+
+        <!-- Mobile header -->
+        <div class="bg-brand-panel text-white p-6 md:hidden no-print">
+            <h1 class="font-serif text-3xl font-bold">Jarupat Khaohomklin</h1>
+            <p class="font-mono text-xs text-brand-accentDark mt-2 uppercase tracking-widest">Business Development & Project Manager</p>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="print-sidebar w-full md:w-80 lg:w-[330px] bg-brand-panel text-brand-panelText p-8 flex flex-col shrink-0">
+
+            <div class="hidden md:block print-show mb-9 print-mb-small">
+                <h1 class="font-serif text-[2rem] font-bold text-white leading-[1.05]">Jarupat<br>Khaohomklin</h1>
+                <p class="font-mono text-[11px] text-brand-accentDark uppercase tracking-widest mt-3 leading-relaxed">Business Development<br>& Project Manager</p>
+            </div>
+
+            <section class="mb-8 print-mb-small">
+                <h2 class="side-label mb-3">Contact</h2>
+                <dl class="space-y-2 text-[13px]">
+                    <div><dt class="side-label !text-[9px]">Phone</dt><dd><a href="tel:+66955359497" class="hover:text-white">(+66) 95 535 9497</a></dd></div>
+                    <div><dt class="side-label !text-[9px]">Email</dt><dd><a href="mailto:Jarupatman@gmail.com" class="hover:text-white">Jarupatman@gmail.com</a></dd></div>
+                    <div><dt class="side-label !text-[9px]">Portfolio</dt><dd><a href="https://pattmans.github.io/Jarupat-Khaohomklin-Portfolio/" target="_blank" rel="noopener noreferrer" class="hover:text-white">pattmans.github.io/…Portfolio ↗</a></dd></div>
+                    <div><dt class="side-label !text-[9px]">GitHub</dt><dd><a href="https://github.com/WkWkp-Project" target="_blank" rel="noopener noreferrer" class="hover:text-white">github.com/WkWkp-Project ↗</a></dd></div>
+                </dl>
+            </section>
+
+            <section class="mb-8 print-mb-small">
+                <h2 class="side-label mb-3">Skills</h2>
+
+                <h3 class="text-[12px] font-bold text-white mb-1.5">Performance media · 8 yrs</h3>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span class="tag tag-dark">Meta / Google / TikTok</span>
+                    <span class="tag tag-dark">LINE OA</span>
+                    <span class="tag tag-dark">Media planning</span>
+                    <span class="tag tag-dark">ROAS & budget</span>
+                    <span class="tag tag-dark">A/B testing</span>
+                </div>
+
+                <h3 class="text-[12px] font-bold text-white mb-1.5">Content & KOL</h3>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span class="tag tag-dark">KOL planning & SOW</span>
+                    <span class="tag tag-dark">Content calendar</span>
+                    <span class="tag tag-dark">Creative briefing</span>
+                </div>
+
+                <h3 class="text-[12px] font-bold text-white mb-1.5">Search & data</h3>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span class="tag tag-dark">SEO / GEO / AEO</span>
+                    <span class="tag tag-dark">GA4 / GTM</span>
+                    <span class="tag tag-dark">Looker Studio</span>
+                    <span class="tag tag-dark">Search Console</span>
+                </div>
+
+                <h3 class="text-[12px] font-bold text-white mb-1.5">AI & automation · 2026</h3>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="tag tag-dark-accent">Vibe coding (Claude Code)</span>
+                    <span class="tag tag-dark-accent">Prompt engineering</span>
+                    <span class="tag tag-dark-accent">Claude skills & MCP</span>
+                    <span class="tag tag-dark-accent">Gen-AI visuals</span>
+                    <span class="tag tag-dark-accent">AI chatbot design</span>
+                    <span class="tag tag-dark-accent">LLM APIs (Gemini)</span>
+                    <span class="tag tag-dark-accent">AI-assisted planning</span>
+                    <span class="tag tag-dark-accent">Google / LINE / Meta APIs</span>
+                </div>
+            </section>
+
+            <section class="mb-8 print-mb-small">
+                <h2 class="side-label mb-3">Certifications</h2>
+                <ul class="space-y-1.5 text-[12px]">
+                    <li>Google Analytics Certification</li>
+                    <li>Google Digital Garage — Fundamentals of Digital Marketing</li>
+                </ul>
+            </section>
+
+            <section class="mt-auto print-no-auto pt-5 border-t border-brand-panelLine">
+                <h2 class="side-label mb-2">Education</h2>
+                <p class="text-[13px] font-bold text-white">B.S. Developmental Psychology</p>
+                <p class="text-[12px] mt-0.5">Kasetsart University</p>
+                <p class="text-[11px] text-brand-panelMuted mt-1">Vice President, Faculty of Social Sciences Student Council</p>
+            </section>
+        </aside>
+
+        <!-- Main -->
+        <main class="print-content w-full p-8 md:p-10 lg:p-12">
+
+            <section class="mb-9 print-mb-small">
+                <h2 class="section-title mb-3">Profile</h2>
+                <p class="text-brand-muted text-[14px] leading-relaxed print-text-sm">
+                    Performance marketer with <strong class="text-brand-ink">8 years</strong> running paid media on Meta, Google and TikTok, from a <strong class="text-brand-ink">฿1.15M multi-brand electronics campaign</strong> to an FMCG brand's first direct-to-consumer sales. I am now Business Development & Project Manager at Wakuwaku Production, also leading media planning, strategy and KOL campaigns. AI runs through my work: I build the agency's internal tools by <strong class="text-brand-ink">vibe coding with Claude Code</strong> (seven so far, for content production, task tracking, ad operations, influencer management, link attribution, HR and reporting), design AI customer-service flows, and use generative AI for creative and planning.
+                </p>
+            </section>
+
+            <section class="mb-9 print-mb-small">
+                <h2 class="section-title mb-6">Experience</h2>
+
+                <div class="border-l border-brand-line ml-1 space-y-7 print-space-tight pb-1">
+
+                    <div class="relative pl-6 avoid-break">
+                        <span class="absolute -left-[4px] top-2 w-[7px] h-[7px] bg-brand-accent"></span>
+                        <div class="flex flex-col md:flex-row md:items-baseline print-row justify-between mb-0.5">
+                            <h3 class="text-[16px] font-bold">Business Development & Project Manager</h3>
+                            <span class="font-mono text-[11px] text-brand-accent whitespace-nowrap">Jan 2026 – Present</span>
+                        </div>
+                        <p class="text-brand-muted text-[13px] mb-2">Wakuwaku Production · Bangkok</p>
+                        <span class="tag tag-accent mb-2.5">Media Planner & Strategy</span>
+                        <ul class="space-y-1.5 text-brand-muted text-[13px] print-text-sm">
+                            <li class="bullet"><strong class="text-brand-ink">Business development:</strong> Write media plans and KOL proposals (Queen Durian, Little Farm, Sunshine Market, Dingfong, and ฿500K plans for King Rice Bran Oil and Tipco Just Squeez), and package internal tools as client services: Content DB onboarding standards and the WkWkp Link sales deck.</li>
+                            <li class="bullet"><strong class="text-brand-ink">Media, KOL & PM:</strong> Plan and run full-funnel paid media and influencer campaigns for FMCG and lifestyle brands (Thychef, Molle, Tulip, Tipco), owning timeline, budget and ROAS targets across brand, creative and media teams, plus monthly performance reports.</li>
+                            <li class="bullet bullet-accent"><strong class="text-brand-ink">Vibe-coded tools:</strong> Shipped seven internal tools with Claude Code (below), replacing spreadsheets, chat threads and manual handoffs.</li>
+                            <li class="bullet bullet-accent"><strong class="text-brand-ink">AI customer service:</strong> Led discovery for WakuFlow Assist: classified 383 real Tulip conversations, designed knowledge-base answers with human handoff for complaints and sales leads, and planned a shadow-mode rollout.</li>
+                            <li class="bullet bullet-accent"><strong class="text-brand-ink">Generative-AI content:</strong> Standardized the mockup flow (ChatGPT Projects → Higgsfield → Canva), kept a reusable prompt on every asset, and wrote a custom Claude skill for image and banner prompts.</li>
+                        </ul>
+                    </div>
+
+                    <div class="relative pl-6 avoid-break">
+                        <span class="absolute -left-[4px] top-2 w-[7px] h-[7px] bg-brand-line"></span>
+                        <div class="flex flex-col md:flex-row md:items-baseline print-row justify-between mb-0.5">
+                            <h3 class="text-[16px] font-bold">Senior Ads Specialist</h3>
+                            <span class="font-mono text-[11px] text-brand-muted whitespace-nowrap">Mar 2024 – Dec 2025</span>
+                        </div>
+                        <p class="text-brand-muted text-[13px] mb-2">A.M. Lifestyle Digital Agency · Bangkok</p>
+                        <ul class="space-y-1.5 text-brand-muted text-[13px] print-text-sm">
+                            <li class="bullet"><strong class="text-brand-ink">Mahajak Mega Deal</strong> (JBL, Harman/Kardon, JBL Quantum · Nov 2024 – Jan 2025): ran ฿1.15M across Meta, Google and TikTok with a separate persona per brand — <strong class="text-brand-ink">708 purchases (+271% vs KPI)</strong>, ROAS up to <strong class="text-brand-ink">153.7×</strong>, 29.5M impressions. Re-run in Nov 2025 – Jan 2026 across seven brand lines: all four headline KPIs beat target.</li>
+                            <li class="bullet"><strong class="text-brand-ink">Dinosaur Rice</strong> (first online sales · Jun – Jul 2025): shifted sales from Shopee to the brand's Facebook page with generation-split content — July orders <strong class="text-brand-ink">30% above KPI</strong>, June purchase value +39% vs KPI, lowest cost per purchase ฿21, on ฿53.4K of a ฿60K budget.</li>
+                            <li class="bullet"><strong class="text-brand-ink">STAND power tools</strong> (iMAN · Mar – Apr 2025): "how to use" video ads plus Shopee, Lazada and TikTok Shop management — purchases <strong class="text-brand-ink">+58.1% in two months</strong>, ROAS 1.45–5.7×.</li>
+                            <li class="bullet">SEO and AEO content plus WordPress optimization; GA4 reporting that fed the next media plan.</li>
+                        </ul>
+                    </div>
+
+                    <div class="relative pl-6 avoid-break">
+                        <span class="absolute -left-[4px] top-2 w-[7px] h-[7px] bg-brand-line"></span>
+                        <div class="flex flex-col md:flex-row md:items-baseline print-row justify-between mb-0.5">
+                            <h3 class="text-[15px] font-bold">Digital Marketing Supervisor</h3>
+                            <span class="font-mono text-[11px] text-brand-muted whitespace-nowrap">Nov 2022 – Feb 2024</span>
+                        </div>
+                        <p class="text-brand-muted text-[13px] mb-1.5">Kiddo Pacific Thailand · Bangkok</p>
+                        <p class="text-brand-muted text-[13px] print-text-sm leading-snug">Supervised paid campaigns and monthly budgets for premium mother-and-baby products, including launches, across Meta, Google, TikTok, LINE OA and native ads; ran WordPress and SEO content and GA4 / Looker Studio reporting.</p>
+                    </div>
+
+                    <div class="relative pl-6 avoid-break">
+                        <span class="absolute -left-[4px] top-2 w-[7px] h-[7px] bg-brand-line"></span>
+                        <div class="flex flex-col md:flex-row md:items-baseline print-row justify-between mb-0.5">
+                            <h3 class="text-[15px] font-bold">Ads Manager</h3>
+                            <span class="font-mono text-[11px] text-brand-muted whitespace-nowrap">Nov 2019 – Nov 2022</span>
+                        </div>
+                        <p class="text-brand-muted text-[13px] mb-1.5">Wellgate Distribution · Bangkok</p>
+                        <p class="text-brand-muted text-[13px] print-text-sm leading-snug">Ran Meta, Google, native and LINE ads that met sales targets three years running; managed LINE OA, LINE Today co-op placements, SEO product content and Pixel-based targeting.</p>
+                    </div>
+
+                    <div class="relative pl-6">
+                        <span class="absolute -left-[3px] top-2 w-[5px] h-[5px] bg-brand-line"></span>
+                        <p class="text-[12px] text-brand-muted">
+                            Earlier: digital marketing and lead generation at <strong class="text-brand-ink">Aoonjai Thailand</strong> (2019), <strong class="text-brand-ink">The Line Clinic</strong> (2018–2019) and <strong class="text-brand-ink">Topica Edumall</strong> (2018).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="flex flex-col sm:flex-row sm:items-end gap-3 justify-between section-title mb-3">
+                    <h2>Internal Tools</h2>
+                    <span class="tag tag-accent font-normal">Vibe-coded with Claude Code</span>
+                </div>
+                <p class="text-[12px] text-brand-muted mb-3">I define the problem, workflow and rules; Claude writes and hardens the code. Case studies: <a href="https://pattmans.github.io/Jarupat-Khaohomklin-Portfolio/#martech" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:underline">portfolio ↗</a> · Source: <a href="https://github.com/WkWkp-Project" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:underline">github.com/WkWkp-Project ↗</a></p>
+
+                <dl class="columns-1 md:columns-2 print-cols-2 gap-x-6 text-[12px] leading-snug">
+                    <div class="avoid-break border-t border-brand-line pt-2 pb-2"><dt class="font-bold">Content DB</dt><dd class="text-brand-muted">Campaign hub from brief to results: Drive sync, asset tracking, audit log, one-click client handoff.</dd></div>
+                    <div class="avoid-break border-t border-brand-line pt-2 pb-2"><dt class="font-bold">Creator Hub</dt><dd class="text-brand-muted">Influencer directory and per-campaign KOL plans: tiers, fees, budgets, results, Thai Excel import.</dd></div>
+                    <div class="avoid-break border-t border-brand-line pt-2 pb-2"><dt class="font-bold">PM Hub</dt><dd class="text-brand-muted">Team task tracker: Gantt, workload-clash and deadline-risk checks, reminders, chat, Google Calendar.</dd></div>
+                    <div class="avoid-break border-t border-brand-line pt-2 pb-2"><dt class="font-bold">Ad Ops Dashboard</dt><dd class="text-brand-muted">Multi-brand ad schedule from Google Sheets with LINE alerts and plan-vs-actual KPIs.</dd></div>
+                    <div class="avoid-break border-t border-brand-line pt-2 pb-2"><dt class="font-bold">WkWkp Link</dt><dd class="text-brand-muted">Campaign link shortener with UTM attribution and privacy-first click analytics.</dd></div>
+                    <div class="avoid-break border-t border-brand-line pt-2 pb-2"><dt class="font-bold">Line-Leave</dt><dd class="text-brand-muted">Leave requests through LINE chat, with Thai labour-law entitlements and approvals.</dd></div>
+                    <div class="avoid-break border-t border-brand-line pt-2 pb-2"><dt class="font-bold">Facebook Performance Analyzer <span class="font-normal text-brand-muted">(in development)</span></dt><dd class="text-brand-muted">Pulls page and ad data from Meta's APIs, scores posts with visible reasoning, builds client reports.</dd></div>
+                </dl>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
